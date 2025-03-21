@@ -76,6 +76,31 @@ namespace MediaTekDocuments.controller
             return access.GetAllPublics();
         }
 
+        /// <summary>
+        /// getter sur les commandes document
+        /// </summary>
+        /// <returns>Liste d'objets CommandeDocument</returns>
+        public List<CommandeDocument> GetAllCommandeDocument()
+        {
+            return access.GetAllCommandeDocument();
+        }
+
+        /// <summary>
+        /// getter sur les suivis
+        /// </summary>
+        /// <returns>Liste d'objets Suivi</returns>
+        public List<Categorie> GetAllSuivis()
+        {
+            return access.GetAllSuivis();
+        }
+
+        /// <summary>
+        /// setter sur un suivi
+        /// </summary>
+        public bool SetOneSuivi(CommandeDocument commandeDocument)
+        {
+            return access.SetOneSuivi(commandeDocument);
+        }
 
         /// <summary>
         /// récupère les exemplaires d'une revue
@@ -95,6 +120,17 @@ namespace MediaTekDocuments.controller
         public bool CreerExemplaire(Exemplaire exemplaire)
         {
             return access.CreerExemplaire(exemplaire);
+        }
+
+        public bool CreerCommandeDocument(CommandeDocument commandeDocument)
+        {
+            return access.CreerCommandeDocument(commandeDocument);
+        }
+
+
+        public void SupprCommandeDocument(CommandeDocument commandeDocument)
+        {
+            access.SupprCommandeDocument(commandeDocument);
         }
     }
 }

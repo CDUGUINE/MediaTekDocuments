@@ -7,6 +7,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace MediaTekDocuments.dal
 {
@@ -37,6 +38,12 @@ namespace MediaTekDocuments.dal
         private const string POST = "POST";
         /// <summary>
         /// méthode HTTP pour update
+        /// </summary>
+        private const string UPDATE = "PUT";
+        /// <summary>
+        /// Méthode HTTP pour delete
+        /// </summary>
+        private const string SUPR = "DELETE";
 
         /// <summary>
         /// Méthode privée pour créer un singleton
@@ -130,7 +137,6 @@ namespace MediaTekDocuments.dal
             return lesRevues;
         }
 
-
         /// <summary>
         /// Retourne les exemplaires d'une revue
         /// </summary>
@@ -141,6 +147,78 @@ namespace MediaTekDocuments.dal
             String jsonIdDocument = convertToJson("id", idDocument);
             List<Exemplaire> lesExemplaires = TraitementRecup<Exemplaire>(GET, "exemplaire/" + jsonIdDocument, null);
             return lesExemplaires;
+        }
+
+        /// <summary>
+        /// Retourne toutes les commandes de documents à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets CommandeDocument</returns>
+        public List<CommandeDocument> GetAllCommandeDocument()
+        {
+            List<CommandeDocument> lesCommandesLivres = TraitementRecup<CommandeDocument>(GET, "commandedocument", null);
+            return lesCommandesLivres;
+        }
+
+        /// <summary>
+        /// Retourne tous les suivis à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Suivi</returns>
+        public List<Categorie> GetAllSuivis()
+        {
+            List<Categorie> lesSuivis = TraitementRecup<Categorie>(GET, "suivi", null);
+            return lesSuivis;
+        }
+
+
+        /// <summary>
+        /// Modifie un suivi dans la BDD
+        /// </summary>
+        /// <param name="commandeDocument"></param>
+        /// <returns></returns>
+        public bool SetOneSuivi(CommandeDocument commandeDocument)
+        {
+            String jsonCommandeDocument = convertToJson("idsuivi", commandeDocument.IdSuivi);
+            try
+            {
+               List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(UPDATE, "commandedocument/" + commandeDocument.Id, "champs=" + jsonCommandeDocument);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Crée une nouvelle commande dans la BDD
+        /// </summary>
+        /// <param name="commandeDocument"></param>
+        public bool CreerCommandeDocument(CommandeDocument commandeDocument)
+        {
+            String jsonCommandeDocument = JsonConvert.SerializeObject(commandeDocument, new CustomDateTimeConverter());
+            Console.WriteLine(jsonCommandeDocument);
+            try
+            {
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(POST, "commandedocument", "champs=" + jsonCommandeDocument);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;          
+        }
+
+        /// <summary>
+        /// Supprime une commande dans la BDD
+        /// </summary>
+        /// <param name="commandeDocument"></param>
+        public void SupprCommandeDocument(CommandeDocument commandeDocument)
+        {
+            String jsonCommandeDocument = convertToJson("id", commandeDocument.Id);
+            Console.WriteLine(jsonCommandeDocument);
+            TraitementRecup<Object>(SUPR, "commandedocument/" + jsonCommandeDocument, null);
         }
 
         /// <summary>
