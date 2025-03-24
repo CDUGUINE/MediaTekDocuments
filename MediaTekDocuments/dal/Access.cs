@@ -160,6 +160,16 @@ namespace MediaTekDocuments.dal
         }
 
         /// <summary>
+        /// Retourne tous les abonnements à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Abonnement</returns>
+        public List<Abonnement> GetAllAbonnements()
+        {
+            List<Abonnement> lesAbonnements = TraitementRecup<Abonnement>(GET, "abonnement", null);
+            return lesAbonnements;
+        }
+
+        /// <summary>
         /// Retourne tous les suivis à partir de la BDD
         /// </summary>
         /// <returns>Liste d'objets Suivi</returns>
@@ -233,6 +243,46 @@ namespace MediaTekDocuments.dal
             {
                 List<Exemplaire> liste = TraitementRecup<Exemplaire>(POST, "exemplaire", "champs=" + jsonExemplaire);
                 return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Crée un nouvel abonnement dans la BDD
+        /// </summary>
+        /// <param name="abonnement"></param>
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            String jsonAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
+            Console.WriteLine(jsonAbonnement);
+            try
+            {
+                List<Abonnement> liste = TraitementRecup<Abonnement>(POST, "abonnement", "champs=" + jsonAbonnement);
+                return (liste != null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Supprime un abonnement dans la BDD
+        /// </summary>
+        /// <param name="abonnement"></param>
+        /// <returns></returns>
+        public bool SupprAbonnement(Abonnement abonnement)
+        {
+            try
+            {
+                String jsonAbonnement = convertToJson("id", abonnement.Id);
+                Console.WriteLine(jsonAbonnement);
+                TraitementRecup<Object>(SUPR, "abonnement/" + jsonAbonnement, null);
             }
             catch (Exception ex)
             {

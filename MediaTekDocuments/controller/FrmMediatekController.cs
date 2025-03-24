@@ -105,11 +105,11 @@ namespace MediaTekDocuments.controller
         /// <summary>
         /// récupère les exemplaires d'une revue
         /// </summary>
-        /// <param name="idDocuement">id de la revue concernée</param>
+        /// <param name="idDocument">id de la revue concernée</param>
         /// <returns>Liste d'objets Exemplaire</returns>
-        public List<Exemplaire> GetExemplairesRevue(string idDocuement)
+        public List<Exemplaire> GetExemplairesRevue(string idDocument)
         {
-            return access.GetExemplairesRevue(idDocuement);
+            return access.GetExemplairesRevue(idDocument);
         }
 
         /// <summary>
@@ -122,6 +122,15 @@ namespace MediaTekDocuments.controller
             return access.CreerExemplaire(exemplaire);
         }
 
+        /// <summary>
+        /// getter sur les abonnements
+        /// </summary>
+        /// <returns>Liste d'objets CommandeDocument</returns>
+        public List<Abonnement> GetAllAbonnements()
+        {
+            return access.GetAllAbonnements();
+        }
+
         public bool CreerCommandeDocument(CommandeDocument commandeDocument)
         {
             return access.CreerCommandeDocument(commandeDocument);
@@ -131,6 +140,16 @@ namespace MediaTekDocuments.controller
         public void SupprCommandeDocument(CommandeDocument commandeDocument)
         {
             access.SupprCommandeDocument(commandeDocument);
+        }
+
+        public bool CreerAbonnement(Abonnement abonnement)
+        {
+            return access.CreerAbonnement(abonnement);
+        }
+
+        public bool SupprAbonnement(Abonnement abonnement)
+        {
+            return access.SupprAbonnement(abonnement);
         }
     }
 }
