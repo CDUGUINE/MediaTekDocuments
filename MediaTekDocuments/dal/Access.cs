@@ -51,11 +51,10 @@ namespace MediaTekDocuments.dal
         /// </summary>
         private Access()
         {
-            String authenticationString;
+            String authValue = ConfigurationManager.AppSettings["authenticationName"];
             try
             {
-                authenticationString = "admin:adminpwd";
-                api = ApiRest.GetInstance(uriApi, authenticationString);
+                api = ApiRest.GetInstance(uriApi, authValue);
             }
             catch (Exception e)
             {
@@ -179,6 +178,15 @@ namespace MediaTekDocuments.dal
             return lesSuivis;
         }
 
+        /// <summary>
+        /// Retourne tous les utilisateurs à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Utilisateurs</returns>
+        public List<Utilisateur> GetAllUtilisateurs()
+        {
+            List<Utilisateur> lesUtilisateurs = TraitementRecup<Utilisateur>(GET, "utilisateur", null);
+            return lesUtilisateurs;
+        }
 
         /// <summary>
         /// Modifie un suivi dans la BDD
@@ -371,6 +379,5 @@ namespace MediaTekDocuments.dal
                 serializer.Serialize(writer, value);
             }
         }
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MediaTekDocuments.model;
 using MediaTekDocuments.dal;
+using System.Windows.Forms;
 
 namespace MediaTekDocuments.controller
 {
@@ -131,6 +132,15 @@ namespace MediaTekDocuments.controller
             return access.GetAllAbonnements();
         }
 
+        /// <summary>
+        /// getter sur les utilisateurs
+        /// </summary>
+        /// <returns>Liste d'objets Utilisateurs</returns>
+        public List<Utilisateur> GetAllUtilisateurs()
+        {
+            return access.GetAllUtilisateurs();
+        }
+
         public bool CreerCommandeDocument(CommandeDocument commandeDocument)
         {
             return access.CreerCommandeDocument(commandeDocument);
@@ -151,5 +161,13 @@ namespace MediaTekDocuments.controller
         {
             return access.SupprAbonnement(abonnement);
         }
+
+        public void LancerApplication(Form fenetreActuelle, Form nouvelleFenetre)
+        {
+            fenetreActuelle.Hide();
+            nouvelleFenetre.Show();
+            nouvelleFenetre.FormClosed += (s, args) => fenetreActuelle.Close();
+        }
+
     }
 }
