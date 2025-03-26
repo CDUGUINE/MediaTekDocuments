@@ -20,45 +20,63 @@ namespace MediaTekDocuments.view
         private readonly BindingSource bdgGenres = new BindingSource();
         private readonly BindingSource bdgPublics = new BindingSource();
         private readonly BindingSource bdgRayons = new BindingSource();
+        private int idService;
 
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
         /// </summary>
-        internal FrmMediatek()
+        internal FrmMediatek(int idService)
         {
             InitializeComponent();
             this.controller = new FrmMediatekController();
+            this.idService = idService;
         }
 
         /// <summary>
         /// Affiche un avetissement à l'ouverture de l'application si des abonnements expirent bientôt
+        /// et désactive certaines fonctionnalités en fonction du service du personnel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmMediatek_Load(object sender, EventArgs e)
         {
-            lesAbonnements = controller.GetAllAbonnements();
-            lesRevues = controller.GetAllRevues();
-            Boolean ecrireMessage = false;
-            // Trier les abonnements par date de fin d'abonnement
-            List<Abonnement> abonnementsTries = lesAbonnements.OrderBy(a => a.DateFinAbonnement).ToList();
-
-            string message = "Abonnements expirants dans moins de 30 jours :\n";
-            foreach (Abonnement abonnement in abonnementsTries)
+            switch (idService)
             {
-                DateTime dateFinAbonnement = abonnement.DateFinAbonnement;
-                Revue revue = lesRevues.Find(x => x.Id.Equals(abonnement.IdRevue));
-                string titre = revue?.Titre ?? "Inconnu"; // Evite les erreurs si la revue n'est pas trouvée
+                case 1 :
+                    tabOngletsApplication.TabPages.Remove(tabCommandeLivres);
+                    tabOngletsApplication.TabPages.Remove(tabCommandeDvd);
+                    tabOngletsApplication.TabPages.Remove(tabCommandeRevues);
+                    grpReceptionExemplaire.Enabled = false;
+                    break;
+                case 3 :
+                    lesAbonnements = controller.GetAllAbonnements();
+                    lesRevues = controller.GetAllRevues();
+                    Boolean ecrireMessage = false;
+                    // Trier les abonnements par date de fin d'abonnement
+                    List<Abonnement> abonnementsTries = lesAbonnements.OrderBy(a => a.DateFinAbonnement).ToList();
 
-                if (!abonnement.AbonnementFinImminente(dateFinAbonnement))
-                {
-                    ecrireMessage = true;
-                    message += $"{titre} expire le {dateFinAbonnement.ToShortDateString()}\n";
-                }
-            }
-            if (ecrireMessage)
-            {
-                MessageBox.Show(message, "Avertissement");
+                    string message = "Abonnements expirants dans moins de 30 jours :\n";
+                    foreach (Abonnement abonnement in abonnementsTries)
+                    {
+                        DateTime dateFinAbonnement = abonnement.DateFinAbonnement;
+                        Revue revue = lesRevues.Find(x => x.Id.Equals(abonnement.IdRevue));
+                        string titre = revue?.Titre ?? "Inconnu"; // Evite les erreurs si la revue n'est pas trouvée
+
+                        if (!abonnement.AbonnementFinImminente(dateFinAbonnement))
+                        {
+                            ecrireMessage = true;
+                            message += $"{titre} expire le {dateFinAbonnement.ToShortDateString()}\n";
+                        }
+                    }
+                    if (ecrireMessage)
+                    {
+                        MessageBox.Show(message, "Avertissement");
+                    }
+                    break;
+                default :
+                    MessageBox.Show("Vos droits ne sont pas suffisants pour accéder à cette application", "Service Culture");
+                    Environment.Exit(0);
+                    break;
             }
         }
 

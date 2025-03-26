@@ -179,6 +179,15 @@ namespace MediaTekDocuments.dal
             return lesSuivis;
         }
 
+        /// <summary>
+        /// Retourne tous les utilisateurs à partir de la BDD
+        /// </summary>
+        /// <returns>Liste d'objets Utilisateurs</returns>
+        public List<Utilisateur> GetAllUtilisateurs()
+        {
+            List<Utilisateur> lesUtilisateurs = TraitementRecup<Utilisateur>(GET, "utilisateur", null);
+            return lesUtilisateurs;
+        }
 
         /// <summary>
         /// Modifie un suivi dans la BDD
@@ -371,6 +380,5 @@ namespace MediaTekDocuments.dal
                 serializer.Serialize(writer, value);
             }
         }
-
     }
 }
