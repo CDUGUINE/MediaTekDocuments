@@ -5,6 +5,8 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using Serilog;
+using System.Configuration;
 
 namespace MediaTekDocuments.dal
 {
@@ -49,12 +51,19 @@ namespace MediaTekDocuments.dal
         private Access()
         {
             String authValue = ConfigurationManager.AppSettings["authenticationName"];
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Verbose()
+                .WriteTo.Console()
+                .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
             try
             {
                 api = ApiRest.GetInstance(uriApi, authValue);
             }
             catch (Exception e)
             {
+                Log.Fatal(e, "erreur d'authentification auprès de l'API");
                 Console.WriteLine(e.Message);
                 Environment.Exit(0);
             }
@@ -200,6 +209,7 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                Log.Information(ex, "le changement de suivi n'a pas pu être effectué");
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -212,7 +222,6 @@ namespace MediaTekDocuments.dal
         public bool CreerCommandeDocument(CommandeDocument commandeDocument)
         {
             String jsonCommandeDocument = JsonConvert.SerializeObject(commandeDocument, new CustomDateTimeConverter());
-            Console.WriteLine(jsonCommandeDocument);
             try
             {
                 List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(POST, "commandedocument", "champs=" + jsonCommandeDocument);
@@ -220,6 +229,7 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                Log.Information(ex, "La nouvelle commande n'a pas pu être créée");
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -232,7 +242,6 @@ namespace MediaTekDocuments.dal
         public void SupprCommandeDocument(CommandeDocument commandeDocument)
         {
             String jsonCommandeDocument = convertToJson("id", commandeDocument.Id);
-            Console.WriteLine(jsonCommandeDocument);
             TraitementRecup<Object>(SUPR, "commandedocument/" + jsonCommandeDocument, null);
         }
 
@@ -251,6 +260,7 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                Log.Information(ex, "Le nouvel exemplaire n'a pas pu être créé");
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -263,7 +273,6 @@ namespace MediaTekDocuments.dal
         public bool CreerAbonnement(Abonnement abonnement)
         {
             String jsonAbonnement = JsonConvert.SerializeObject(abonnement, new CustomDateTimeConverter());
-            Console.WriteLine(jsonAbonnement);
             try
             {
                 List<Abonnement> liste = TraitementRecup<Abonnement>(POST, "abonnement", "champs=" + jsonAbonnement);
@@ -271,6 +280,7 @@ namespace MediaTekDocuments.dal
             }
             catch (Exception ex)
             {
+                Log.Information(ex, "Le nouvel abonnement n'a pas pu être créé");
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -286,11 +296,11 @@ namespace MediaTekDocuments.dal
             try
             {
                 String jsonAbonnement = convertToJson("id", abonnement.Id);
-                Console.WriteLine(jsonAbonnement);
                 TraitementRecup<Object>(SUPR, "abonnement/" + jsonAbonnement, null);
             }
             catch (Exception ex)
             {
+                Log.Information(ex, "L'abonnement n'a pas pu être supprimé");
                 Console.WriteLine(ex.Message);
             }
             return false;
@@ -325,11 +335,13 @@ namespace MediaTekDocuments.dal
                 }
                 else
                 {
+                    Log.Information((String)retour["message"], "code erreur = " + code);
                     Console.WriteLine("code erreur = " + code + " message = " + (String)retour["message"]);
                 }
             }
             catch (Exception e)
             {
+                Log.Fatal(e, "erreur lors de l'accès à l'API");
                 Console.WriteLine("Erreur lors de l'accès à l'API : " + e.Message);
                 Environment.Exit(0);
             }
