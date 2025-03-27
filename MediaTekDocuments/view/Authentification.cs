@@ -12,7 +12,7 @@ namespace MediaTekDocuments.view
     public partial class FrmAuthentification : Form
     {
         private readonly FrmMediatekController controller;
-        private List<Utilisateur> lesUtilisateurs;
+        private readonly List<Utilisateur> lesUtilisateurs;
 
         internal FrmAuthentification()
         {
@@ -25,7 +25,7 @@ namespace MediaTekDocuments.view
         {
             string login = txbLogin.Text;
             string password = txbPassword.Text;
-            if (login !="" && password != "")
+            if (login != "" && password != "")
             {
                 Utilisateur utilisateur = lesUtilisateurs.Find(x => x.Login.Equals(login));
                 if (utilisateur == null)

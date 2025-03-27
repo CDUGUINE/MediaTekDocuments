@@ -1,11 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using MediaTekDocuments.controller;
 using MediaTekDocuments.model;
-using MediaTekDocuments.controller;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using System.Text;
 
 namespace MediaTekDocuments.view
 
@@ -20,7 +21,7 @@ namespace MediaTekDocuments.view
         private readonly BindingSource bdgGenres = new BindingSource();
         private readonly BindingSource bdgPublics = new BindingSource();
         private readonly BindingSource bdgRayons = new BindingSource();
-        private int idService;
+        private readonly int idService;
 
         /// <summary>
         /// Constructeur : création du contrôleur lié à ce formulaire
@@ -42,20 +43,20 @@ namespace MediaTekDocuments.view
         {
             switch (idService)
             {
-                case 1 :
+                case 1:
                     tabOngletsApplication.TabPages.Remove(tabCommandeLivres);
                     tabOngletsApplication.TabPages.Remove(tabCommandeDvd);
                     tabOngletsApplication.TabPages.Remove(tabCommandeRevues);
                     grpReceptionExemplaire.Enabled = false;
                     break;
-                case 3 :
+                case 3:
                     lesAbonnements = controller.GetAllAbonnements();
                     lesRevues = controller.GetAllRevues();
                     Boolean ecrireMessage = false;
                     // Trier les abonnements par date de fin d'abonnement
                     List<Abonnement> abonnementsTries = lesAbonnements.OrderBy(a => a.DateFinAbonnement).ToList();
 
-                    string message = "Abonnements expirants dans moins de 30 jours :\n";
+                    StringBuilder message = new StringBuilder("Abonnements expirants dans moins de 30 jours :\n");
                     foreach (Abonnement abonnement in abonnementsTries)
                     {
                         DateTime dateFinAbonnement = abonnement.DateFinAbonnement;
@@ -65,15 +66,15 @@ namespace MediaTekDocuments.view
                         if (!abonnement.AbonnementFinImminente(dateFinAbonnement))
                         {
                             ecrireMessage = true;
-                            message += $"{titre} expire le {dateFinAbonnement.ToShortDateString()}\n";
+                            message.Append($"{titre} expire le {dateFinAbonnement.ToShortDateString()}\n");
                         }
                     }
                     if (ecrireMessage)
                     {
-                        MessageBox.Show(message, "Avertissement");
+                        MessageBox.Show(message.ToString(), "Avertissement");
                     }
                     break;
-                default :
+                default:
                     MessageBox.Show("Vos droits ne sont pas suffisants pour accéder à cette application", "Service Culture");
                     Environment.Exit(0);
                     break;
@@ -1208,7 +1209,7 @@ namespace MediaTekDocuments.view
         /// <param name="e"></param>
         private void btnReceptionExemplaireValider_Click(object sender, EventArgs e)
         {
-            if (!txbReceptionExemplaireNumero.Text.Equals("")) 
+            if (!txbReceptionExemplaireNumero.Text.Equals(""))
             {
                 try
                 {
@@ -1433,14 +1434,14 @@ namespace MediaTekDocuments.view
         /// <returns>indice de la nouvelle commande</returns>
         private string NouvelIndex()
         {
-            List<CommandeDocument> lesCommandesDocument = controller.GetAllCommandeDocument();
-            List<Abonnement> lesAbonnements = controller.GetAllAbonnements();
-            if(lesCommandesDocument.Count > 0)
+            List<CommandeDocument> lesCommandesDoc = controller.GetAllCommandeDocument();
+            List<Abonnement> lesAbos = controller.GetAllAbonnements();
+            if (lesCommandesDoc.Count > 0)
             {
-                int intNewIndex = int.Parse(lesCommandesDocument[lesCommandesDocument.Count - 1].Id) + 1;
-                if (lesAbonnements.Count > 0)
+                int intNewIndex = int.Parse(lesCommandesDoc[lesCommandesDoc.Count - 1].Id) + 1;
+                if (lesAbos.Count > 0)
                 {
-                    int intNewIndex2 = int.Parse(lesAbonnements[lesAbonnements.Count - 1].Id) + 1;
+                    int intNewIndex2 = int.Parse(lesAbos[lesAbos.Count - 1].Id) + 1;
                     intNewIndex = Math.Max(intNewIndex, intNewIndex2);
                 }
                 string NewIndex = intNewIndex.ToString();
@@ -2200,7 +2201,7 @@ namespace MediaTekDocuments.view
         {
             if (dgvCommandesListeRevue.SelectedRows.Count > 0) // à revoir
             {
-                AccesModifCommandeRevueGroupBox(true);                
+                AccesModifCommandeRevueGroupBox(true);
             }
             else
             {
@@ -2289,14 +2290,14 @@ namespace MediaTekDocuments.view
                 }
             }
             if (supprimer)
-                {
-                    controller.SupprAbonnement(abonnement);
-                    RechargerAbonnementsRevues();
-                }
+            {
+                controller.SupprAbonnement(abonnement);
+                RechargerAbonnementsRevues();
+            }
             else
             {
                 MessageBox.Show("Un ou plusieurs exemplaires sont encore rattachés à cette revue", "Suppression impossible");
-            }              
+            }
         }
 
         #endregion

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MediaTekDocuments.manager;
 using MediaTekDocuments.model;
-using MediaTekDocuments.manager;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System.Configuration;
-using System.Linq;
-using System.Windows.Forms;
+using System;
+using System.Collections.Generic;
 
 namespace MediaTekDocuments.dal
 {
@@ -70,7 +67,7 @@ namespace MediaTekDocuments.dal
         /// <returns>instance unique de la classe</returns>
         public static Access GetInstance()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new Access();
             }
@@ -199,7 +196,7 @@ namespace MediaTekDocuments.dal
             String jsonCommandeDocument = convertToJson("idsuivi", commandeDocument.IdSuivi);
             try
             {
-               List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(UPDATE, "commandedocument/" + commandeDocument.Id, "champs=" + jsonCommandeDocument);
+                List<CommandeDocument> liste = TraitementRecup<CommandeDocument>(UPDATE, "commandedocument/" + commandeDocument.Id, "champs=" + jsonCommandeDocument);
                 return (liste != null);
             }
             catch (Exception ex)
@@ -226,7 +223,7 @@ namespace MediaTekDocuments.dal
             {
                 Console.WriteLine(ex.Message);
             }
-            return false;          
+            return false;
         }
 
         /// <summary>
@@ -308,7 +305,7 @@ namespace MediaTekDocuments.dal
         /// <param name="message">information envoyée dans l'url</param>
         /// <param name="parametres">paramètres à envoyer dans le body, au format "chp1=val1&chp2=val2&..."</param>
         /// <returns>liste d'objets récupérés (ou liste vide)</returns>
-        private List<T> TraitementRecup<T> (String methode, String message, String parametres)
+        private List<T> TraitementRecup<T>(String methode, String message, String parametres)
         {
             // trans
             List<T> liste = new List<T>();
@@ -331,9 +328,10 @@ namespace MediaTekDocuments.dal
                 {
                     Console.WriteLine("code erreur = " + code + " message = " + (String)retour["message"]);
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
-                Console.WriteLine("Erreur lors de l'accès à l'API : "+e.Message);
+                Console.WriteLine("Erreur lors de l'accès à l'API : " + e.Message);
                 Environment.Exit(0);
             }
             return liste;
