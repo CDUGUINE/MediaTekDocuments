@@ -2740,7 +2740,7 @@ namespace MediaTekDocuments.view
             this.grpModifCommandeRevue.Size = new System.Drawing.Size(541, 140);
             this.grpModifCommandeRevue.TabIndex = 26;
             this.grpModifCommandeRevue.TabStop = false;
-            this.grpModifCommandeRevue.Text = "Suppréssion d\'une commande";
+            this.grpModifCommandeRevue.Text = "Suppression d\'une commande";
             // 
             // btnSupprimerCommandeRevue
             // 

@@ -1,8 +1,9 @@
-﻿/// <summary>
-/// Classe métier Utilisateur
-/// </summary>
+﻿
 namespace MediaTekDocuments.model
 {
+    /// <summary>
+    /// Classe métier Utilisateur
+    /// </summary>
     public class Utilisateur
     {
         public string Login { get; set; }

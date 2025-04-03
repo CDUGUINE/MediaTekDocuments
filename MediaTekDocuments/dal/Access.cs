@@ -13,12 +13,20 @@ namespace MediaTekDocuments.dal
     /// <summary>
     /// Classe d'accès aux données
     /// </summary>
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
+    /// Classe d'accès aux données
+    /// </summary>
     public class Access
     {
         /// <summary>
         /// adresse de l'API
         /// </summary>
-        private static readonly string uriApi = "http://localhost/rest_mediatekdocuments/";
+        private static readonly string uriApi = "http://otsomediatekdocuments.com/rest_mediatekdocuments/";
         /// <summary>
         /// instance unique de la classe
         /// </summary>

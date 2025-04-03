@@ -63,7 +63,7 @@ namespace MediaTekDocuments.view
                         Revue revue = lesRevues.Find(x => x.Id.Equals(abonnement.IdRevue));
                         string titre = revue?.Titre ?? "Inconnu"; // Evite les erreurs si la revue n'est pas trouvée
 
-                        if (!abonnement.AbonnementFinImminente(dateFinAbonnement))
+                        if (abonnement.AbonnementFinImminente(dateFinAbonnement))
                         {
                             ecrireMessage = true;
                             message.Append($"{titre} expire le {dateFinAbonnement.ToShortDateString()}\n");
@@ -751,7 +751,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Remplit le dategrid avec la liste reçue en paramètre
         /// </summary>
-        /// <param name="revues"></param>
+        /// <param name="revues">les revues</param>
         private void RemplirRevuesListe(List<Revue> revues)
         {
             bdgRevuesListe.DataSource = revues;
@@ -1156,7 +1156,7 @@ namespace MediaTekDocuments.view
             string idDocument = txbReceptionRevueNumero.Text;
             lesExemplaires = controller.GetExemplairesRevue(idDocument);
             RemplirReceptionExemplairesListe(lesExemplaires);
-            AccesReceptionExemplaireGroupBox(true);
+            AccesReceptionExemplaireGroupBox(idService==3);
         }
 
         /// <summary>
@@ -1569,7 +1569,6 @@ namespace MediaTekDocuments.view
         /// <param name="e"></param>
         private void btnModifSuivi_Click(object sender, EventArgs e)
         {
-            //lesCommandesDocuments = controller.GetAllCommandeDocument();
             CommandeDocument commandeDocument = lesCommandesDocument.Find(x => x.Id.Equals(dgvCommandesListe.SelectedRows[0].Cells[4].Value));
             commandeDocument.IdSuivi = cbxSuivi.SelectedIndex + 1;
             try
@@ -1712,7 +1711,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Remplit le datagrid avec la liste reçue en paramètre
         /// </summary>
-        /// <param name="commandeDocuments"></param>
+        /// <param name="commandeDocuments">les commandeDocuments</param>
         private void RemplirCommandesDvdListe(List<CommandeDocument> commandeDocuments)
         {
             bdgCommandesListeDvd.DataSource = commandeDocuments;
@@ -1732,7 +1731,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Affichage des informations du DVD sélectionné
         /// </summary>
-        /// <param name="dvd"></param>
+        /// <param name="dvd">le dvd</param>
         private void AfficheDvdInfosCom(Dvd dvd)
         {
             txbDvdDureeCom.Text = dvd.Duree.ToString();
@@ -1906,12 +1905,11 @@ namespace MediaTekDocuments.view
         /// <param name="e"></param>
         private void btnModifSuiviDvd_Click(object sender, EventArgs e)
         {
-            //lesCommandesDocuments = controller.GetAllCommandeDocument();
             CommandeDocument commandeDocument = lesCommandesDocument.Find(x => x.Id.Equals(dgvCommandesListeDvd.SelectedRows[0].Cells[4].Value));
             commandeDocument.IdSuivi = cbxSuiviDvd.SelectedIndex + 1;
             try
             {
-                controller.SetOneSuivi(commandeDocument); // idem livre ?
+                controller.SetOneSuivi(commandeDocument);
                 RechargerCommandesDvd();
             }
             catch
@@ -1998,7 +1996,6 @@ namespace MediaTekDocuments.view
         #endregion
 
         #region Onglet Commande revues
-        //private List<Revue> lesRevues = new List<Revue>(); pour rappel, défini dans l'onglet revues
 
         private readonly BindingSource bdgAbonnementsListe = new BindingSource();
         private List<Abonnement> lesAbonnements = new List<Abonnement>();
@@ -2040,7 +2037,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Remplit le datagrid avec la liste reçue en paramètre
         /// </summary>
-        /// <param name="commandeDocuments"></param>
+        /// <param name="abonnements">les abonnements</param>
         private void RemplirCommandesRevueListe(List<Abonnement> abonnements)
         {
             bdgAbonnementsListe.DataSource = abonnements;
@@ -2058,7 +2055,7 @@ namespace MediaTekDocuments.view
         /// <summary>
         /// Affichage des informations de la revue sélectionnée
         /// </summary>
-        /// <param name="dvd"></param>
+        /// <param name="dvd">le dvd</param>
         private void AfficheRevueInfosCom(Revue revue)
         {
             txbRevuesTitreCom.Text = revue.Titre;
@@ -2241,7 +2238,7 @@ namespace MediaTekDocuments.view
             }
             else
             {
-                MessageBox.Show("Vous devez compléter le montant et la quantité", "Information");
+                MessageBox.Show("Vous devez compléter le montant et la date de fin d'abonnement doit être ultérieure à aujourd'hui", "Information");
             }
         }
 

@@ -6,6 +6,14 @@ using System.Windows.Forms;
 namespace MediaTekDocuments.controller
 {
     /// <summary>
+    /// Classe contrôleur
+    /// </summary>
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
     /// Contrôleur lié à FrmMediatek
     /// </summary>
     class FrmMediatekController
@@ -141,32 +149,60 @@ namespace MediaTekDocuments.controller
             return access.GetAllUtilisateurs();
         }
 
+        /// <summary>
+        /// Crée un commandeDocument
+        /// </summary>
+        /// <param name="commandeDocument">Le commandeDocument concerné</param>
+        /// <returns>true si un commandeDocument a été créé, false sinon</returns>
         public bool CreerCommandeDocument(CommandeDocument commandeDocument)
         {
             return access.CreerCommandeDocument(commandeDocument);
         }
 
-
+        /// <summary>
+        /// Supprime un commandeDocument
+        /// </summary>
+        /// <param name="commandeDocument">Le commandeDocument concerné</param>
         public void SupprCommandeDocument(CommandeDocument commandeDocument)
         {
             access.SupprCommandeDocument(commandeDocument);
         }
 
+        /// <summary>
+        /// Crée un abonnement
+        /// </summary>
+        /// <param name="abonnement">L'abonnement concerné</param>
+        /// <returns>true si un abonnement a été créé, false sinon</returns>
         public bool CreerAbonnement(Abonnement abonnement)
         {
             return access.CreerAbonnement(abonnement);
         }
 
+        /// <summary>
+        /// Supprime un abonnement
+        /// </summary>
+        /// <param name="abonnement">L'abonnement concerné</param>
+        /// <returns>true si un abonnement a été supprimé, false sinon</returns>
         public bool SupprAbonnement(Abonnement abonnement)
         {
             return access.SupprAbonnement(abonnement);
         }
 
+        /// <summary>
+        /// Après une authentification réussie, lance la fenêtre principale de l'application
+        /// </summary>
+        /// <param name="fenetreActuelle">Fenêtre à fermer</param>
+        /// <param name="nouvelleFenetre">Fenêtre à ouvrir</param>
         public void LancerApplication(Form fenetreActuelle, Form nouvelleFenetre)
         {
             fenetreActuelle.Hide();
-            nouvelleFenetre.Show();
-            nouvelleFenetre.FormClosed += (s, args) => fenetreActuelle.Close();
+            nouvelleFenetre.ShowDialog();
+            fenetreActuelle.Close();
+            nouvelleFenetre.FormClosed += (s, args) =>
+            {
+                if (!fenetreActuelle.IsDisposed)
+                    fenetreActuelle.Close();
+            };
         }
 
     }

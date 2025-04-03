@@ -3,6 +3,14 @@
 namespace MediaTekDocuments.model
 {
     /// <summary>
+    /// Classes métiers
+    /// </summary>
+    internal class NamespaceDoc
+    {
+
+    }
+
+    /// <summary>
     /// Classe métier Abonnement hérite de Commande
     /// </summary>
     public class Abonnement : Commande
@@ -37,7 +45,7 @@ namespace MediaTekDocuments.model
         public bool AbonnementFinImminente(DateTime dateFinAbonnement)
         {
             DateTime limite = DateTime.Now.AddDays(30);
-            return (limite < dateFinAbonnement);
+            return (limite > dateFinAbonnement);
         }
     }
 }
