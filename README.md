@@ -30,7 +30,7 @@ Pour supprimer une commande, il suffit de :<br>
 Le bouton n'est actif que si la suppression est possible pour cette commande.<br>
 ### Onglet 6 : Commandes DVD
 Cette fois, on entre le numéro du DVD.<br>
-![comdvd](https://github.com/user-attachments/assets/51e9f0a6-9423-4d98-a90f-24dddeac01e3)
+[comdvd](https://github.com/user-attachments/assets/51e9f0a6-9423-4d98-a90f-24dddeac01e3)
 Le fonctionnement est identique à l'onglet de commande des livres.<br>
 La seule différence réside dans certaines informations détaillées, spécifiques aux DVD : durée (à la place de ISBN), réalisateur (à la place de l'auteur), synopsis (à la place de collection).
 ### Onglet 7 : Commandes revues
