@@ -14,7 +14,7 @@ Le tableau indique toutes les commandes passées avec possibilité de tri, crois
 #### Nouvelle commande
 Il suffit de renseigner le montant de la commande ainsi que le nombre d'exemplaires pour créer une nouvelle commande.<br>
 La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données. 
-#### Modification d'un suivi
+### Modification d'un suivi
 Pour modifier le suivi d'une commande, il suffit de :<br>
 - la sélectionner,<br>
 - choisir son nouveau suivi dans la liste déroulante,<br>
