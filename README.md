@@ -18,14 +18,14 @@ La date de commande est automatiquement la date du jour de saisie de la commande
 Pour modifier le suivi d'une commande, il suffit de :<br>
 - la sélectionner,<br>
 - choisir son nouveau suivi dans la liste déroulante,<br>
-- cliquer sur "Modifier le suivi".<br>
+- cliquer sur <strong>Modifier le suivi</strong>.<br>
 <br>
-Une commande est toujours "en cours" lorsqu'elle est créée et l'application empêche certaines modifications.<br>
+Une commande est toujours <strong>en cours</strong> lorsqu'elle est créée et l'application empêche certaines modifications.<br>
 Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.<br>
 #### Suppression d'une commande
 Pour supprimer une commande, il suffit de :<br>
 - la sélectionner,<br>
-- cliquer sur "Supprimer la commande".<br>
+- cliquer sur <strong>Supprimer la commande</strong>.<br>
 <br>
 Le bouton n'est actif que si la suppression est possible pour cette commande.<br>
 ### Onglet 6 : Commandes DVD
