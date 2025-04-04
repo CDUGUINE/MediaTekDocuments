@@ -44,12 +44,13 @@ Il faut préciser :
 - la date de fin d'abonnement.
 
 Encore une fois la date de commande et le numéro de la commande sont générés automatiquement.
-### Suppression d'une commande
+#### Suppression d'une commande
 Ici, il n'y a pas de suivi de commande à modifier, on ne peut que supprimer une commande (ou abonnement).
 Si des exemplaires restent rattachés à un abonnement, la suppression sera impossible et un message l'indiquera. 
-### Onglet 4 : Parutions des revues
-Cet onglet permet d'enregistrer la réception de nouvelles parutions d'une revue.<br>
-Il se décompose en 2 parties (groupbox).
+#### Suivi des abonnements
+Lorsqu'un responsable de la gestion des commandes se connecte à l'application, il reçoit une alerte sur les abonnement qui arrivent à échéance : 
+![alerteabonnements](https://github.com/user-attachments/assets/ae8aed05-0d00-463f-91f2-3c5cf25774fa)
+Il peut ainsi commander un nouvel abonnement, si le réseau des médiathèques désire continuer à recevoir ces revues. 
 ## La base de données
 La base de données 'mediatek86 ' est au format MySQL.<br>
 Voici sa structure :<br>
