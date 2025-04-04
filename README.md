@@ -7,22 +7,26 @@ La nouvelle application permet maintenant de gérer la commande de documents à 
 ## Les nouveaux onglets
 ### Onglet 5 : Commandes livres
 Dans cet onglet, la recherche se fait avec le numéro du livre.<br>
-On retrouve alors l'ensemble des commandes passées, on peut passer une nouvelle commande ou modifier le suivi d'une commande.<br>
+On retrouve alors l'ensemble des informations du livre, comme dans l'onglet 1.<br>
 ![comlivres](https://github.com/user-attachments/assets/b7320711-2284-4a0d-8589-dffe83df63b3)
-#### Recherches
-<strong>Par le titre :</strong> Il est possible de rechercher un ou plusieurs livres par le titre. La saisie dans la zone de recherche se fait en autocomplétions sans tenir compte de la casse. Seuls les livres concernés apparaissent dans la liste.<br>
-<strong>Par le numéro :</strong> il est possible de saisir un numéro et, en cliquant sur "Rechercher", seul le livre concerné apparait dans la liste (ou un message d'erreur si le livre n'est pas trouvé, avec la liste remplie à nouveau).
-#### Filtres
-Il est possible d'appliquer un filtre (un seul à la fois) sur une de ces 3 catégories : genre, public, rayon.<br>
-Un combo par catégorie permet de sélectionner un item. Seuls les livres correspondant à l'item sélectionné, apparaissent dans la liste (par exemple, en choisissant le genre "Policier", seuls les livres de genre "Policier" apparaissent).<br>
-Le fait de sélectionner un autre filtre ou de faire une recherche, annule le filtre actuel.<br>
-Il est possible aussi d'annuler le filtre en cliquant sur une des croix.
-#### Tris
-Le fait de cliquer sur le titre d'une des colonnes de la liste des livres, permet de trier la liste par rapport à la colonne choisie.
-#### Affichage des informations détaillées
-Si la liste des livres contient des éléments, par défaut il y en a toujours un de sélectionné. Il est aussi possible de sélectionner une ligne (donc un livre) en cliquant n'importe où sur la ligne.<br>
-La partie basse de la fenêtre affiche les informations détaillées du livre sélectionné (numéro de document, code ISBN, titre, auteur(e), collection, genre, public, rayon, chemin de l'image) ainsi que l'image.
-### Onglet 2 : DVD
+#### Commandes en cours
+Le tableau indique toutes les commandes passées avec possibilité de tri, croissant ou décroissant sur chaque colonne.<br>
+#### Nouvelle commande
+Il suffit de renseigner le montant de la commande ainsi que le nombre d'examplaires pour créer une nouvelle commande.<br>
+La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données. 
+#### Modification d'un suivi
+Pour modifier le suivi d'une commande, il suffit de :<br>
+- la sélectionner,<br>
+- choisir son nouveau suivi dans la liste déroulante,<br>
+- cliquer sur "Modifier le suivi".<br>
+Un commande est toujours "en cours" lorsqu'elle est créée et l'application empêche certaines modifications.<br>
+Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.<br>
+#### Suppression d'un commande
+Pour supprimer une commande, il suffit de :<br>
+- la sélectionner,<br>
+- cliquer sur "Supprimer la commande".<br>
+Le bouton n'est actif que si la suppression est possible pour cette commande.
+### Onglet 6 : Commandes DVD
 Cet onglet présente la liste des DVD, triée par titre.<br>
 La liste comporte les informations suivantes : titre, durée, réalisateur, genre, public, rayon.<br>
 Le fonctionnement est identique à l'onglet des livres.<br>
