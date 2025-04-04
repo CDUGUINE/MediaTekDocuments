@@ -13,7 +13,7 @@ On retrouve alors l'ensemble des informations du livre, comme dans l'onglet 1.<b
 Le tableau indique toutes les commandes passées avec possibilité de tri, croissant ou décroissant sur chaque colonne.<br>
 #### Nouvelle commande
 Il suffit de renseigner le montant de la commande ainsi que le nombre d'exemplaires pour créer une nouvelle commande.<br>
-La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données. 
+La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données.<br>
 #### Modification d'un suivi
 Pour modifier le suivi d'une commande, il suffit de :<br>
 - la sélectionner,<br>
