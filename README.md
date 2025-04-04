@@ -14,14 +14,14 @@ Le tableau indique toutes les commandes passées avec possibilité de tri, crois
 #### Nouvelle commande
 Il suffit de renseigner le montant de la commande ainsi que le nombre d'exemplaires pour créer une nouvelle commande.<br>
 La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données. 
-### Modification d'un suivi
+#### Modification d'un suivi
 Pour modifier le suivi d'une commande, il suffit de :<br>
 - la sélectionner,<br>
 - choisir son nouveau suivi dans la liste déroulante,<br>
 - cliquer sur "Modifier le suivi".<br>
 <br>
 Une commande est toujours "en cours" lorsqu'elle est créée et l'application empêche certaines modifications.<br>
-Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.<br>
+Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.
 #### Suppression d'un commande
 Pour supprimer une commande, il suffit de :<br>
 - la sélectionner,<br>
