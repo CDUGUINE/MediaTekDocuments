@@ -12,43 +12,44 @@ On retrouve alors l'ensemble des informations du livre, comme dans l'onglet 1.<b
 #### Commandes en cours
 Le tableau indique toutes les commandes passées avec possibilité de tri, croissant ou décroissant sur chaque colonne.<br>
 #### Nouvelle commande
-Il suffit de renseigner le montant de la commande ainsi que le nombre d'examplaires pour créer une nouvelle commande.<br>
+Il suffit de renseigner le montant de la commande ainsi que le nombre d'exemplaires pour créer une nouvelle commande.<br>
 La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données. 
 #### Modification d'un suivi
 Pour modifier le suivi d'une commande, il suffit de :<br>
 - la sélectionner,<br>
 - choisir son nouveau suivi dans la liste déroulante,<br>
 - cliquer sur "Modifier le suivi".<br>
-Un commande est toujours "en cours" lorsqu'elle est créée et l'application empêche certaines modifications.<br>
+<br>
+Une commande est toujours "en cours" lorsqu'elle est créée et l'application empêche certaines modifications.<br>
 Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.<br>
 #### Suppression d'un commande
 Pour supprimer une commande, il suffit de :<br>
 - la sélectionner,<br>
 - cliquer sur "Supprimer la commande".<br>
+<br>
 Le bouton n'est actif que si la suppression est possible pour cette commande.
 ### Onglet 6 : Commandes DVD
-Cet onglet présente la liste des DVD, triée par titre.<br>
-La liste comporte les informations suivantes : titre, durée, réalisateur, genre, public, rayon.<br>
-Le fonctionnement est identique à l'onglet des livres.<br>
+Cette fois, on entre le numéro du DVD.<br>
+![comdvd](https://github.com/user-attachments/assets/7fc91d80-f8c9-4c29-84dd-56f05fa84e76)
+Le fonctionnement est identique à l'onglet de commande des livres.<br>
 La seule différence réside dans certaines informations détaillées, spécifiques aux DVD : durée (à la place de ISBN), réalisateur (à la place de l'auteur), synopsis (à la place de collection).
-### Onglet 3 : Revues
-Cet onglet présente la liste des revues, triées par titre.<br>
-La liste comporte les informations suivantes : titre, périodicité, délai mise à dispo, genre, public, rayon.<br>
-Le fonctionnement est identique à l'onglet des livres.<br>
-La seule différence réside dans certaines informations détaillées, spécifiques aux revues : périodicité (à la place de l'auteur), délai mise à dispo (à la place de collection).
+### Onglet 7 : Commandes revues
+Cete fois, on entre le numéro de la revue.<br>
+![comrevues](https://github.com/user-attachments/assets/2c56ff92-d2a9-4152-9ae5-77010392c646)
+Le fonctionnement est légérement différent.<br>
+#### Nouvelle commande
+Une nouvelle commande correspond à un nouvel abonnement.<br>
+Il faut préciser :<br>
+- le montant de l'abonnement,<br>
+- la date de fin d'abonnement.<br>
+<br>
+Encore une fois la date de commande et le numéro de la commande sont générés automatiquement.<br>
+### Suppression d'une commande
+Ici, il n'y a pas de suivi de commande à modifier, on ne peut que supprimer une commande (ou abonnement).<br>
+Si des exemplaires restent rattachés à un abonnement, la suppression sera impossible et un message l'indiquera. 
 ### Onglet 4 : Parutions des revues
 Cet onglet permet d'enregistrer la réception de nouvelles parutions d'une revue.<br>
 Il se décompose en 2 parties (groupbox).
-#### Partie "Recherche revue"
-Cette partie permet, à partir de la saisie d'un numéro de revue (puis en cliquant sur le bouton "Rechercher"), d'afficher toutes les informations de la revue (comme dans l'onglet précédent), ainsi que son image principale en petit, avec en plus la liste des parutions déjà reçues (numéro, date achat, chemin photo). Sur la sélection d'une ligne dans la liste des parutions, la photo de la parution correspondante s'affiche à droite.<br>
-Dès qu'un numéro de revue est reconnu et ses informations affichées, la seconde partie ("Nouvelle parution réceptionnée pour cette revue") devient accessible.<br>
-Si une modification est apportée au numéro de la revue, toutes les zones sont réinitialisées et la seconde partie est rendue inaccessible, tant que le bouton "Rechercher" n'est pas utilisé.
-#### Partie "Nouvelle parution réceptionnée pour cette revue"
-Cette partie n'est accessible que si une revue a bien été trouvée dans la première partie.<br>
-Il est possible alors de réceptionner une nouvelle parution en saisissant son numéro, en sélectionnant une date (date du jour proposée par défaut) et en cherchant l'image correspondante (optionnel) qui doit alors s'afficher à droite.<br>
-Le clic sur "Valider la réception" va permettre d'ajouter un tuple dans la table Exemplaire de la BDD. La parution correspondante apparaitra alors automatiquement dans la liste des parutions et les zones de la partie "Nouvelle parution réceptionnée pour cette revue" seront réinitialisées.<br>
-Si le numéro de la parution existe déjà, il n’est pas ajouté et un message est affiché.
-![img3](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/225e10f2-406a-4b5e-bfa9-368d45456056)
 ## La base de données
 La base de données 'mediatek86 ' est au format MySQL.<br>
 Voici sa structure :<br>
