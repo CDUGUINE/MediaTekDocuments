@@ -22,7 +22,7 @@ Pour modifier le suivi d'une commande, il suffit de :<br>
 <br>
 Une commande est toujours "en cours" lorsqu'elle est créée et l'application empêche certaines modifications.<br>
 Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.<br>
-#### Suppression d'un commande
+#### Suppression d'une commande
 Pour supprimer une commande, il suffit de :<br>
 - la sélectionner,<br>
 - cliquer sur "Supprimer la commande".<br>
