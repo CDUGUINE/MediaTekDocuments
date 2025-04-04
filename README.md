@@ -29,14 +29,14 @@ Pour supprimer une commande, il suffit de :
 
 Le bouton n'est actif que si la suppression est possible pour cette commande.
 ### Onglet 6 : Commandes DVD
-Cette fois, on entre le numéro du DVD.
+Cette fois, on entre le numéro du DVD.<br>
 ![comdvd](https://github.com/user-attachments/assets/51e9f0a6-9423-4d98-a90f-24dddeac01e3)
-Le fonctionnement est identique à l'onglet de commande des livres.<br>
+<br>Le fonctionnement est identique à l'onglet de commande des livres.<br>
 La seule différence réside dans certaines informations détaillées, spécifiques aux DVD : durée (à la place de ISBN), réalisateur (à la place de l'auteur), synopsis (à la place de collection).
 ### Onglet 7 : Commandes revues
-Cete fois, on entre le numéro de la revue.
+Cete fois, on entre le numéro de la revue.<br>
 ![comrevues](https://github.com/user-attachments/assets/81474691-e35a-45fd-bf9d-5e8303e366b5)
-Le fonctionnement est légérement différent.
+<br>Le fonctionnement est légérement différent.
 #### Nouvelle commande
 Une nouvelle commande correspond à un nouvel abonnement.<br>
 Il faut préciser :
@@ -48,9 +48,9 @@ Encore une fois la date de commande et le numéro de la commande sont générés
 Ici, il n'y a pas de suivi de commande à modifier, on ne peut que supprimer une commande (ou abonnement).
 Si des exemplaires restent rattachés à un abonnement, la suppression sera impossible et un message l'indiquera. 
 #### Suivi des abonnements
-Lorsqu'un responsable de la gestion des commandes se connecte à l'application, il reçoit une alerte sur les abonnement qui arrivent à échéance : 
+Lorsqu'un responsable de la gestion des commandes se connecte à l'application, il reçoit une alerte sur les abonnement qui arrivent à échéance :<br>
 ![alerteabonnements](https://github.com/user-attachments/assets/ae8aed05-0d00-463f-91f2-3c5cf25774fa)
-Il peut ainsi commander un nouvel abonnement, si le réseau des médiathèques désire continuer à recevoir ces revues. 
+<br>Il peut ainsi commander un nouvel abonnement, si le réseau des médiathèques désire continuer à recevoir ces revues. 
 ## La base de données
 La base de données 'mediatek86 ' est au format MySQL.<br>
 Voici sa structure :<br>
