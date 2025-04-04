@@ -2,15 +2,13 @@
 Les fonctionnalités de l'application d'origine sont détaillées dans le readme du dépôt d'origine.<br>
 Vous pouvez consulter ce dépot à l'adresse : https://github.com/CNED-SLAM/MediaTekDocuments.git<br>
 Vous trouverez ci-dessous les détails des éléments ajoutés à cette application.
-## Présentation
-Actuellement l'application est partiellement codée. Voici les fonctionnalités actuellement opérationnelles : recherches et affichage d'informations sur les documents de la médiathèque (livres, DVD, revues), réception de nouveaux numéros de revues.<br>
-![img1](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/9b5a4c1b-6914-4455-94bf-fec24adba3ec)
-<br>L'application ne comporte qu'une seule fenêtre divisée en plusieurs onglets.
-## Les différents onglets
-### Onglet 1 : Livres
-Cet onglet présente la liste des livres, triée par défaut sur le titre.<br>
-La liste comporte les informations suivantes : titre, auteur, collection, genre, public, rayon.
-![img2](https://github.com/CNED-SLAM/MediaTekDocuments/assets/100127886/e3f31979-cf24-416d-afb1-a588356e8966)
+## Nouvelles fonctionnalités
+La nouvelle application permet maintenant de gérer la commande de documents à travers 3 nouveaux onglets
+## Les nouveaux onglets
+### Onglet 5 : Commandes livres
+Dans cet onglet, la recherche se fait avec le numéro du livre.<br>
+On retrouve alors l'ensemble des commandes passées, on peut passer une nouvelle commande ou modifier le suivi d'une commande.<br>
+![comlivres](https://github.com/user-attachments/assets/b7320711-2284-4a0d-8589-dffe83df63b3)
 #### Recherches
 <strong>Par le titre :</strong> Il est possible de rechercher un ou plusieurs livres par le titre. La saisie dans la zone de recherche se fait en autocomplétions sans tenir compte de la casse. Seuls les livres concernés apparaissent dans la liste.<br>
 <strong>Par le numéro :</strong> il est possible de saisir un numéro et, en cliquant sur "Rechercher", seul le livre concerné apparait dans la liste (ou un message d'erreur si le livre n'est pas trouvé, avec la liste remplie à nouveau).
