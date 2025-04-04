@@ -21,13 +21,13 @@ Pour modifier le suivi d'une commande, il suffit de :<br>
 - cliquer sur "Modifier le suivi".<br>
 <br>
 Une commande est toujours "en cours" lorsqu'elle est créée et l'application empêche certaines modifications.<br>
-Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.
+Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.<br>
 #### Suppression d'un commande
 Pour supprimer une commande, il suffit de :<br>
 - la sélectionner,<br>
 - cliquer sur "Supprimer la commande".<br>
 <br>
-Le bouton n'est actif que si la suppression est possible pour cette commande.
+Le bouton n'est actif que si la suppression est possible pour cette commande.<br>
 ### Onglet 6 : Commandes DVD
 Cette fois, on entre le numéro du DVD.<br>
 ![comdvd](https://github.com/user-attachments/assets/7fc91d80-f8c9-4c29-84dd-56f05fa84e76)
