@@ -12,40 +12,40 @@ On retrouve alors l'ensemble des informations du livre, comme dans l'onglet 1.<b
 #### Commandes en cours
 Le tableau indique toutes les commandes passées avec possibilité de tri, croissant ou décroissant sur chaque colonne.<br>
 #### Nouvelle commande
-Il suffit de renseigner le montant de la commande ainsi que le nombre d'exemplaires pour créer une nouvelle commande.<br>
-La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données.<br>
+Il suffit de renseigner le montant de la commande ainsi que le nombre d'exemplaires pour créer une nouvelle commande.
+La date de commande est automatiquement la date du jour de saisie de la commande et le numéro de commande est généré à partir des numéros de commandes présents dans la base de données.
 #### Modification d'un suivi
-Pour modifier le suivi d'une commande, il suffit de :<br>
-- la sélectionner,<br>
-- choisir son nouveau suivi dans la liste déroulante,<br>
-- cliquer sur <strong>Modifier le suivi</strong>.<br>
-<br>
-Une commande est toujours <strong>en cours</strong> lorsqu'elle est créée et l'application empêche certaines modifications.<br>
-Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.<br>
-#### Modification d'un suivi
-Pour supprimer une commande, il suffit de :<br>
-- la sélectionner,<br>
-- cliquer sur <strong>Supprimer la commande</strong>.<br>
-<br>
-Le bouton n'est actif que si la suppression est possible pour cette commande.<br>
+Pour modifier le suivi d'une commande, il suffit de :
+- la sélectionner,
+- choisir son nouveau suivi dans la liste déroulante,
+- cliquer sur <strong>Modifier le suivi</strong>.
+
+Une commande est toujours <strong>en cours</strong> lorsqu'elle est créée et l'application empêche certaines modifications.
+Les règles applicables à la modification du suivi et à la suppression d'une commande sont rappelées au survol de l'icône d'aide.
+#### Suppression d'une commande
+Pour supprimer une commande, il suffit de :
+- la sélectionner,
+- cliquer sur <strong>Supprimer la commande</strong>.
+
+Le bouton n'est actif que si la suppression est possible pour cette commande.
 ### Onglet 6 : Commandes DVD
-Cette fois, on entre le numéro du DVD.<br>
+Cette fois, on entre le numéro du DVD.
 ![comdvd](https://github.com/user-attachments/assets/51e9f0a6-9423-4d98-a90f-24dddeac01e3)
 Le fonctionnement est identique à l'onglet de commande des livres.<br>
 La seule différence réside dans certaines informations détaillées, spécifiques aux DVD : durée (à la place de ISBN), réalisateur (à la place de l'auteur), synopsis (à la place de collection).
 ### Onglet 7 : Commandes revues
-Cete fois, on entre le numéro de la revue.<br>
+Cete fois, on entre le numéro de la revue.
 ![comrevues](https://github.com/user-attachments/assets/81474691-e35a-45fd-bf9d-5e8303e366b5)
-Le fonctionnement est légérement différent.<br>
+Le fonctionnement est légérement différent.
 #### Nouvelle commande
 Une nouvelle commande correspond à un nouvel abonnement.<br>
-Il faut préciser :<br>
-- le montant de l'abonnement,<br>
-- la date de fin d'abonnement.<br>
-<br>
-Encore une fois la date de commande et le numéro de la commande sont générés automatiquement.<br>
+Il faut préciser :
+- le montant de l'abonnement,
+- la date de fin d'abonnement.
+
+Encore une fois la date de commande et le numéro de la commande sont générés automatiquement.
 ### Suppression d'une commande
-Ici, il n'y a pas de suivi de commande à modifier, on ne peut que supprimer une commande (ou abonnement).<br>
+Ici, il n'y a pas de suivi de commande à modifier, on ne peut que supprimer une commande (ou abonnement).
 Si des exemplaires restent rattachés à un abonnement, la suppression sera impossible et un message l'indiquera. 
 ### Onglet 4 : Parutions des revues
 Cet onglet permet d'enregistrer la réception de nouvelles parutions d'une revue.<br>
