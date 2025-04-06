@@ -52,5 +52,5 @@ Lorsqu'un responsable de la gestion des commandes se connecte à l'application, 
 ![alerteabonnements](https://github.com/user-attachments/assets/ae8aed05-0d00-463f-91f2-3c5cf25774fa)
 <br>Il peut ainsi commander un nouvel abonnement, si le réseau des médiathèques désire continuer à recevoir ces revues. 
 ## Utilisation de l'application
-Il suffit de télécharger l'application MediaTekDocuments.exe qui se trouve à la racine de ce dépôt.<br>
+Il suffit de télécharger l'installateur Setup.msi qui se trouve à la racine de ce dépôt et de le lancer.<br>
 Les identifiants nécessaires pour se connnecter à l'application sont fournis aux enseignants qui doivent l'évaluer.
